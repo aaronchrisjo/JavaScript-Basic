@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find Position of Leftmost Vowel</title>
+</head>
+<body>
+    <h1>Find Position of Leftmost Vowel</h1>
+
+    <p>Enter a string:</p>
+    <input type="text" id="inputString" placeholder="Enter a string">
+    <button onclick="findPositionOfVowel()">Find Vowel Position</button>
+
+    <p id="result"></p>
+
+    <script>
+        function first_vowel(str) {
+            const vowelRegex = /[aeiou]/i;
+            const match = str.match(vowelRegex);
+
+            if (match) {
+                return str.indexOf(match[0]) + 1; // Adding 1 to convert from 0-based index to 1-based index
+            } else {
+                return -1;
+            }
+        }
+
+        function findPositionOfVowel() {
+            const inputString = document.getElementById("inputString").value;
+            const resultElement = document.getElementById("result");
+
+            if (inputString.length > 0) {
+                const position = first_vowel(inputString);
+
+                if (position !== -1) {
+                    resultElement.innerHTML = "<p>Position of the leftmost vowel: " + position + "</p>";
+                } else {
+                    resultElement.innerHTML = "<p>No vowels found in the string.</p>";
+                }
+            } else {
+                resultElement.innerHTML = "<p>Please enter a string.</p>";
+            }
+        }
+    </script>
+    <button>
+        <a href="index.html">Go Back</a>
+    </button>
+</body>
+</html>

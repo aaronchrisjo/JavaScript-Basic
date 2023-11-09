@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Remove Zeros from Array</title>
+</head>
+<body>
+    <h1>Remove Zeros from Array</h1>
+
+    <p>Enter a list of numbers separated by commas (e.g., 1, 0, 5, 0, 7):</p>
+    <input type="text" id="inputNumbers" placeholder="Enter numbers">
+    <button onclick="removeZerosFromInput()">Remove Zeros</button>
+
+    <p id="result"></p>
+
+    <script>
+        function removeZeros(array) {
+            let hasZeros = false;
+
+            for (let i = 0; i < array.length; i++) {
+                if (array[i] === 0) {
+                    hasZeros = true;
+                    array.splice(i, 1);
+                    i--;
+                }
+            }
+
+            return hasZeros;
+        }
+
+        function removeZerosFromInput() {
+            const inputNumbers = document.getElementById("inputNumbers").value;
+            const numbers = inputNumbers.split(',').map(Number);
+            const hasZeros = removeZeros(numbers);
+
+            const resultElement = document.getElementById("result");
+            resultElement.innerHTML = "<p>Original Array: [" + numbers.join(', ') + "]</p>";
+            resultElement.innerHTML += "<p>Array without Zeros: [" + numbers.join(', ') + "]</p>";
+            resultElement.innerHTML += "<p>Zeros Found: " + hasZeros + "</p>";
+        }
+    </script>
+    <button>
+        <a href="index.html">Go Back</a>
+    </button>
+</body>
+</html>
